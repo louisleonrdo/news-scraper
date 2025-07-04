@@ -1,0 +1,35 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+# Exclude any folder named 'airflow_env' at any level
+# This covers both the one at the root and potentially one inside 'news'
+airflow_env/
+# If you create other venvs, you might add them here too, e.g.:
+# .venv/
+# venv/
+
+# IDE and Editor specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Data storage folders
+# Exclude 'storage' folder specifically inside 'kompas', 'narasi', 'tempo'
+kompas/storage/
+narasi/storage/
+tempo/storage/
+
+# Any other data files or logs you might generate
+*.log
+*.json # Be careful with this if your DAGs generate JSON output that you DO want to commit
+       # If your DAGs output JSON to a specific 'data' folder, you can exclude that folder instead:
+       # data/

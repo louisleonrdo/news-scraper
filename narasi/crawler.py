@@ -7,36 +7,37 @@ import json
 # Initialization
 current_date = date.today()
 filename = current_date.strftime("%Y-%m-%d")
-
+# current_date = "2025-03-13"
+# filename = current_date
 param = {
     'limit': 10,
-    'isText': True,
-    'isVideo': False,
+    'isText': "true",
+    'isVideo': "false",
     'category': '',
     'pageCount': 1,
     'channel': 'news'
 }
 
 headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',    
     "accept": "application/json, text/plain, */*",
     "accept-language": "en-US,en;q=0.9,fr;q=0.8,id;q=0.7,ms;q=0.6",
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-    "if-none-match": "W/\"1efb7-MGwhzjISKtUyfdXLjgGwhk0sgb8\"",
+    "if-none-match": "W/\"1eec7-kSqzqozcK0/nELSsFKLfAS8TaA0\"",
     "priority": "u=1, i",
-    "sec-ch-ua": "\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+    "sec-ch-ua": "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\"",
     "sec-ch-ua-mobile": "?0",
     "sec-ch-ua-platform": "\"Windows\"",
     "sec-fetch-dest": "empty",
     "sec-fetch-mode": "cors",
-    "sec-fetch-site": "same-site"
+    "sec-fetch-site": "same-site",
+    "referer": "https://narasi.tv/"  
 }
-
 
 
 def extract(selectedDate, count, filter='news'):
     try:
         url = f"https://gateway.narasi.tv/core/api/articles?sort=publishDate&dir=DESC&limit={param['limit']}&isText={param['isText']}&isVideo={param['isVideo']}&category={param['category']}&page={count}&publishDate={selectedDate}&navbar={filter}"
-
+        print(url)
         response = requests.get(url, headers=headers)
         response.raise_for_status()  
 
